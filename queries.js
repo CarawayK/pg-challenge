@@ -7,14 +7,6 @@ const pool = new Pool({
   port: 5432,
 })
 
-// let result = students
-// if (req.query.name) {
-//   // process a query
-//   const selectedStudent = students.filter(student => student.studentName === req.query.name)
-//   result = selectedStudent
-// }
-// res.send(result);
-
 const getStudents = (request, response) => {
   if (request.query.name) {
     pool.query('SELECT * FROM students WHERE name = $1', [request.query.name], (error, results) => {
